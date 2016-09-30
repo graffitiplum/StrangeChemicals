@@ -51,6 +51,14 @@ public class StrangeChemicals extends Service {
 
         chords = new Chords();
 
+        /*
+        msdb = new mySQLDB(getApplicationContext());
+
+        Cursor c = msdb.selectRecords();
+
+        Toast.makeText(this, c.getString(0), Toast.LENGTH_SHORT).show();
+        */
+
         // Loop
 
         task = new Runnable() {

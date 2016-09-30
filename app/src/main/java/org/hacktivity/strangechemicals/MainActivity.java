@@ -4,12 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.SeekBar;
 import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.hacktivity.strangechemicals.Synthesis;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         soundSwitch = (Switch) findViewById(R.id.soundSwitch);
+
     }
 
     public void ssToggle(View view) {
