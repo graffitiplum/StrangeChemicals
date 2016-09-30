@@ -1,34 +1,49 @@
 package org.hacktivity.strangechemicals;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.hacktivity.strangechemicals.Synthesis;
 
 public class MainActivity extends AppCompatActivity {
 
-    Synthesis syn;
+    boolean serviceRunning = false;
+
+    Switch soundSwitch;
+
+    private static int minValue = 30030;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        syn = new Synthesis(44100);
-        syn.createPlayer();
+        soundSwitch = (Switch) findViewById(R.id.soundSwitch);
     }
 
-    public void tvClick(View view) {
-
-        double samples[] = syn.getSineWave(8000, 44100, 2310);
-        samples = syn.curve0(samples);
-
-        syn.writeSound(samples);
-        syn.writeSound(samples);
-        syn.writeSound(samples);
+    public void ssToggle(View view) {
 
         // TODO: Play file in the background.
+
+        if (! serviceRunning) {
+            startService(new Intent(this, StrangeChemicals.class));
+            serviceRunning = true;
+            soundSwitch.setText("On");
+        } else {
+            stopService(new Intent(this, StrangeChemicals.class));
+            serviceRunning = false;
+            soundSwitch.setText("Off");
+        }
+    }
+
+    public void seekMaxLen (View view) {
+
     }
 
 }

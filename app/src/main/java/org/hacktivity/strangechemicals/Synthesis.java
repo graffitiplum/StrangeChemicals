@@ -102,9 +102,9 @@ public class Synthesis {
         audioTrack.play();
     }
 
-    public void writeSound(double[] samples) {
+    public int writeSound(double[] samples) {
         byte[] generatedSnd = get16BitPcm(samples);
-        audioTrack.write(generatedSnd, 0, generatedSnd.length);
+        return audioTrack.write(generatedSnd, 0, generatedSnd.length);
     }
 
     public void destroyAudioTrack() {
